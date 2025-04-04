@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo ss -tnapAe
+sudo ss -antp
