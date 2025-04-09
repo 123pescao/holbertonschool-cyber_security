@@ -1,0 +1,1 @@
+In this project we will be focusing on learning passive reconnaissance.
