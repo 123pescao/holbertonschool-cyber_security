@@ -1,2 +1,2 @@
 #!/bin/bash
-whois "$1" | awk '/^(Registrant |Admin |Tech )/ {sub(/: /, ","); print}' > "$1.csv"
+whois "$1" | awk 'BEGIN { FS=": "; OFS="," } /^(Registrant|Admin|Tech)/ {print $1, $2}' > "$1.csv"
