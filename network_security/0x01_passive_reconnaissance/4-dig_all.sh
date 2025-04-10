@@ -1,2 +1,2 @@
 #!/bin/bash
-dig $1 +noall +answer
+dig @8.8.8.8 $1 any +noall +answer
