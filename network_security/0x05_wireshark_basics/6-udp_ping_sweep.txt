@@ -1,1 +1,1 @@
-udp and udp.length == 0 and udp.dstport == 40125
+ip.proto == 17 and udp and udp.length == 0 and udp.dstport == 40125
