@@ -1,3 +1,3 @@
 #!/bin/bash
-attacker=$(awk '{print $1}' $1 | sort | uniq -c | sort -nr | head -1 | awk '{print $2}')
-grep "^$attacker " $1 | wc -l
+attacker_ip=$(awk '{print $1}' logs.txt | sort | uniq -c | sort -nr | head -n 1 | awk '{print $2}')
+grep -c "^$attacker_ip" logs.txt
