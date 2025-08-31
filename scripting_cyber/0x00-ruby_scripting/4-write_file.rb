@@ -2,23 +2,19 @@
 
 require 'json'
 
-def load_json_array(path)
-  text = File.read(path)
-  data = JSON.parse(text)
-  if data.is_a?(Array)
-    return data
-  end
-  return [data]
-end
-
 def merge_json_files(file1_path, file2_path)
-  src = load_json_array(file1_path)
-  dst = load_json_array(file2_path)
+  file1_content = File.read(file1_path)
+  file2_content = File.read(file2_path)
 
-  src.each do |obj|
-    dst << obj
+  data1 = JSON.parse(file1_content)
+  data2 = JSON.parse(file2_content)
+
+  merged_data = data2 + data1
+
+  File.open(file2_path, "w") do |f|
+    f.write(JSON.pretty_generate(merged_data))
   end
 
-  json_out = JSON.pretty_generate(dst)
-  File.write(file2_path, json_out)
+  # print the required message
+  puts "Merged JSON written to #{file2_path}"
 end
