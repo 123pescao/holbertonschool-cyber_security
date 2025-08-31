@@ -16,26 +16,14 @@ class CaesarCipher
   private
 
   def cipher(message, shift)
-    result_chars = []
-
-    normalized = shift % 26
-
-    message.each_char do |ch|
-      if ch =~ /[A-Z]/
-        base = 'A'.ord
-        offset = ch.ord - base
-        new_offset = (offset + normalized) % 26
-        result_chars << (base + new_offset).chr
-      elsif ch =~ /[a-z]/
-        base = 'a'.ord
-        offset = ch.ord - base
-        new_offset = (offset + normalized) % 26
-        result_chars << (base + new_offset).chr
+    message.chars.map do |char|
+      if char =~ /[A-Z]/   # uppercase
+        (((char.ord - 'A'.ord + shift) % 26) + 'A'.ord).chr
+      elsif char =~ /[a-z]/ # lowercase
+        (((char.ord - 'a'.ord + shift) % 26) + 'a'.ord).chr
       else
-        result_chars << ch
+        char # punctuation, spaces, digits unchanged
       end
-    end
-
-    result_chars.join
+    end.join
   end
 end
