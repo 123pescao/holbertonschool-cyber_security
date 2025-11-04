@@ -1,1 +1,1 @@
-05809c521098e03f0bcc7cc878399d0f
+Holberton{Persist_Through_Win_Registry}
