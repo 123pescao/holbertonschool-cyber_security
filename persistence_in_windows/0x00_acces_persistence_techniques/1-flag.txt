@@ -1,1 +1,1 @@
-Holberton{Persist_Through^_Registry}
+holberton{persist_through^_registry}
